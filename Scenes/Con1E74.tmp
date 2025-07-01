@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://dm4rqbf3c1fyp"]
+
+[ext_resource type="Theme" uid="uid://deatlc68mun0p" path="res://Themes/TitleTheme.tres" id="1_fuusa"]
+[ext_resource type="Script" path="res://Scripts/Configuration/AnimateConfiguration.gd" id="1_l4jyx"]
+[ext_resource type="Texture2D" uid="uid://bmjcytgio83ee" path="res://Images/Bos.png" id="2_mft0n"]
+[ext_resource type="Theme" uid="uid://ccv4g2t5vtkcr" path="res://Themes/TextTheme.tres" id="3_rm27d"]
+[ext_resource type="Script" path="res://Scripts/Configuration/FetchGames.gd" id="5_5aq8r"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l4jyx")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_mft0n")
+
+[node name="TitleBackground" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = 7.0
+offset_bottom = 77.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Title" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -403.0
+offset_right = 403.0
+offset_bottom = 104.0
+grow_horizontal = 2
+theme = ExtResource("1_fuusa")
+bbcode_enabled = true
+text = "[center]Gamefeed Configuration[/center]"
+scroll_active = false
+
+[node name="LoadingLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -161.0
+offset_top = -20.0
+offset_right = 161.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_rm27d")
+bbcode_enabled = true
+text = "[center]Loading Text...[/center]"
+
+[node name="GameFetcher" type="HTTPRequest" parent="."]
+script = ExtResource("5_5aq8r")
+
+[node name="GameList" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -333.0
+grow_horizontal = 2
+grow_vertical = 0
