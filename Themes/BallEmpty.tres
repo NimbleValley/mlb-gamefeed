@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://s4eaoiq2sb6j"]
+
+[ext_resource type="StyleBox" uid="uid://ckl4et47h2asb" path="res://Themes/BallText.tres" id="1_uvsag"]
+
+[resource]
+Panel/styles/panel = ExtResource("1_uvsag")

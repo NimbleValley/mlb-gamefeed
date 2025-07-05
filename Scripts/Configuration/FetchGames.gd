@@ -34,7 +34,23 @@ func _on_request_completed(result, response_code, headers, body):
 			for game in games:
 				var away_team = game["teams"]["away"]["team"]["name"]
 				var home_team = game["teams"]["home"]["team"]["name"]
-				var matchup_text = "%s at %s" % [away_team, home_team]
+				
+				var game_datetime_utc = game["gameDate"]  # This is an ISO 8601 UTC string
+
+				# Convert to UNIX timestamp (UTC)
+				var utc_unix_time = Time.get_unix_time_from_datetime_string(game_datetime_utc)
+
+				# Convert to local time (some Godot builds ignore the 'false' argument, so we correct manually)
+				var timezone_offset = Time.get_time_zone_from_system().get("bias", 0) * 60  # bias is in minutes
+				var local_unix_time = utc_unix_time - timezone_offset
+
+				# Format to string (local time)
+				var local_time_string = Time.get_datetime_string_from_unix_time(local_unix_time, false)
+
+				# Get just the hour + minute (HH:MM)
+				var formatted_time = Time.get_datetime_string_from_unix_time(Time.get_unix_time_from_datetime_string(game["gameDate"]) - 4 * 3600, false).substr(11, 5)
+
+				var matchup_text = "%s at %s  (%s ET)" % [away_team, home_team, formatted_time]
 				var game_pk = game["gamePk"]
 
 				# Create and add button

@@ -74,9 +74,9 @@ script = ExtResource("6_auwsu")
 [node name="ScrollContainer" type="ScrollContainer" parent="GameFetcher"]
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 140.0
+offset_left = 101.0
 offset_top = 126.0
-offset_right = -140.0
+offset_right = -101.0
 offset_bottom = 490.0
 grow_horizontal = 2
 
